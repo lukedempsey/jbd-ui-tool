@@ -10,7 +10,7 @@ function StatCard({
   label,
   value,
   unit,
-  color = 'text-white',
+  color = 'text-[var(--color-text)]',
   sub,
 }: {
   label: string;
@@ -94,10 +94,10 @@ export function OverviewPanel({ hardware, version }: Props) {
 
   const currentColor =
     hardware.current > 0
-      ? 'text-emerald-400'
+      ? 'text-emerald-600'
       : hardware.current < 0
-        ? 'text-orange-400'
-        : 'text-white';
+        ? 'text-orange-600'
+        : 'text-[var(--color-text)]';
 
   const currentLabel = hardware.current > 0 ? 'Charging' : hardware.current < 0 ? 'Discharging' : 'Idle';
 
@@ -126,7 +126,7 @@ export function OverviewPanel({ hardware, version }: Props) {
           label="Pack Voltage"
           value={hardware.voltage.toFixed(2)}
           unit="V"
-          color="text-blue-400"
+          color="text-blue-600"
         />
 
         <StatCard
@@ -148,7 +148,7 @@ export function OverviewPanel({ hardware, version }: Props) {
           label="Cycles"
           value={hardware.cycles.toString()}
           unit=""
-          color="text-purple-400"
+          color="text-purple-600"
         />
       </div>
 
@@ -157,7 +157,7 @@ export function OverviewPanel({ hardware, version }: Props) {
         <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-3">
           {hardware.temperatures.map((temp, i) => {
             const tempColor =
-              temp > 45 ? 'text-red-400' : temp > 35 ? 'text-amber-400' : temp < 5 ? 'text-blue-400' : 'text-emerald-400';
+              temp > 45 ? 'text-red-600' : temp > 35 ? 'text-amber-600' : temp < 5 ? 'text-blue-600' : 'text-emerald-600';
             return (
               <StatCard
                 key={i}

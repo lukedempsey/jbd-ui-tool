@@ -204,6 +204,13 @@ export function useBMS() {
     [readAll]
   );
 
+  // Auto-start polling at 1 Hz when connected
+  useEffect(() => {
+    if (state.connectionState === 'connected' && !pollingRef.current) {
+      startPolling(1000);
+    }
+  }, [state.connectionState, startPolling]);
+
   const stopPolling = useCallback(() => {
     pollingRef.current = false;
     if (pollingTimerRef.current) clearTimeout(pollingTimerRef.current);

@@ -45,19 +45,19 @@ export function CellsPanel({ hardware, cells }: Props) {
       <div className="grid grid-cols-4 gap-3">
         <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl p-3">
           <span className="text-xs text-[var(--color-text-muted)] uppercase tracking-wider">Min</span>
-          <div className="text-lg font-bold text-blue-400">{(minV * 1000).toFixed(0)} mV</div>
+          <div className="text-lg font-bold text-blue-600">{(minV * 1000).toFixed(0)} mV</div>
         </div>
         <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl p-3">
           <span className="text-xs text-[var(--color-text-muted)] uppercase tracking-wider">Max</span>
-          <div className="text-lg font-bold text-amber-400">{(maxV * 1000).toFixed(0)} mV</div>
+          <div className="text-lg font-bold text-amber-600">{(maxV * 1000).toFixed(0)} mV</div>
         </div>
         <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl p-3">
           <span className="text-xs text-[var(--color-text-muted)] uppercase tracking-wider">Average</span>
-          <div className="text-lg font-bold text-emerald-400">{(avgV * 1000).toFixed(0)} mV</div>
+          <div className="text-lg font-bold text-emerald-600">{(avgV * 1000).toFixed(0)} mV</div>
         </div>
         <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl p-3">
           <span className="text-xs text-[var(--color-text-muted)] uppercase tracking-wider">Delta</span>
-          <div className={`text-lg font-bold ${delta > 0.05 ? 'text-red-400' : delta > 0.02 ? 'text-amber-400' : 'text-emerald-400'}`}>
+          <div className={`text-lg font-bold ${delta > 0.05 ? 'text-red-600' : delta > 0.02 ? 'text-amber-600' : 'text-emerald-600'}`}>
             {(delta * 1000).toFixed(0)} mV
           </div>
         </div>
@@ -139,7 +139,7 @@ export function CellsPanel({ hardware, cells }: Props) {
           <tbody>
             {voltages.map((v, i) => {
               const diff = v - avgV;
-              const diffColor = Math.abs(diff) > 0.02 ? (diff > 0 ? 'text-amber-400' : 'text-blue-400') : 'text-[var(--color-text-muted)]';
+              const diffColor = Math.abs(diff) > 0.02 ? (diff > 0 ? 'text-amber-600' : 'text-blue-600') : 'text-[var(--color-text-muted)]';
               return (
                 <tr key={i} className="border-t border-[var(--color-border)] hover:bg-[var(--color-surface-light)]/50">
                   <td className="px-4 py-2 font-medium">Cell {i + 1}</td>

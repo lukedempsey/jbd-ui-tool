@@ -18,7 +18,7 @@ function ProtectionFlag({
     <div
       className={`flex items-center gap-2 px-3 py-2 rounded-lg border ${
         active
-          ? 'bg-red-900/40 border-red-700 text-red-300'
+          ? 'bg-red-50 border-red-200 text-red-700'
           : 'bg-[var(--color-surface-light)] border-[var(--color-border)] text-[var(--color-text-muted)]'
       }`}
     >
@@ -73,7 +73,7 @@ export function ProtectionPanel({ hardware, onSetMosfet }: Props) {
           <div className="flex items-center justify-between p-4 rounded-lg bg-[var(--color-surface-light)] border border-[var(--color-border)]">
             <div>
               <div className="font-medium">Charge MOSFET</div>
-              <div className={`text-sm ${hardware.chargeEnabled ? 'text-emerald-400' : 'text-red-400'}`}>
+              <div className={`text-sm ${hardware.chargeEnabled ? 'text-emerald-600' : 'text-red-600'}`}>
                 {hardware.chargeEnabled ? 'Enabled' : 'Disabled'}
               </div>
             </div>
@@ -84,8 +84,8 @@ export function ProtectionPanel({ hardware, onSetMosfet }: Props) {
               }
               className={`relative w-14 h-7 rounded-full transition-colors cursor-pointer ${
                 hardware.chargeEnabled
-                  ? 'bg-emerald-600'
-                  : 'bg-gray-600'
+                  ? 'bg-emerald-500'
+                  : 'bg-gray-300'
               } ${mosLoading ? 'opacity-50' : ''}`}
             >
               <div
@@ -102,7 +102,7 @@ export function ProtectionPanel({ hardware, onSetMosfet }: Props) {
           <div className="flex items-center justify-between p-4 rounded-lg bg-[var(--color-surface-light)] border border-[var(--color-border)]">
             <div>
               <div className="font-medium">Discharge MOSFET</div>
-              <div className={`text-sm ${hardware.dischargeEnabled ? 'text-emerald-400' : 'text-red-400'}`}>
+              <div className={`text-sm ${hardware.dischargeEnabled ? 'text-emerald-600' : 'text-red-600'}`}>
                 {hardware.dischargeEnabled ? 'Enabled' : 'Disabled'}
               </div>
             </div>
@@ -113,8 +113,8 @@ export function ProtectionPanel({ hardware, onSetMosfet }: Props) {
               }
               className={`relative w-14 h-7 rounded-full transition-colors cursor-pointer ${
                 hardware.dischargeEnabled
-                  ? 'bg-emerald-600'
-                  : 'bg-gray-600'
+                  ? 'bg-emerald-500'
+                  : 'bg-gray-300'
               } ${mosLoading ? 'opacity-50' : ''}`}
             >
               <div
@@ -136,11 +136,11 @@ export function ProtectionPanel({ hardware, onSetMosfet }: Props) {
             Protection Status
           </h3>
           {hasProtection ? (
-            <span className="px-2 py-0.5 text-xs font-medium bg-red-900/50 text-red-300 border border-red-700 rounded-full">
+            <span className="px-2 py-0.5 text-xs font-medium bg-red-50 text-red-700 border border-red-200 rounded-full">
               ACTIVE
             </span>
           ) : (
-            <span className="px-2 py-0.5 text-xs font-medium bg-emerald-900/50 text-emerald-300 border border-emerald-700 rounded-full">
+            <span className="px-2 py-0.5 text-xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-full">
               CLEAR
             </span>
           )}

@@ -132,7 +132,7 @@ function ConfigFieldRow({
             </button>
             <button
               onClick={handleCancel}
-              className="px-2 py-1 text-xs bg-gray-600 hover:bg-gray-700 text-white rounded cursor-pointer"
+              className="px-2 py-1 text-xs bg-gray-200 hover:bg-gray-300 text-gray-700 rounded cursor-pointer"
             >
               Cancel
             </button>
@@ -239,12 +239,12 @@ export function ConfigPanel({
                   key={f.key}
                   className={`flex items-center gap-2 px-3 py-2 rounded-lg border ${
                     f.active
-                      ? 'bg-emerald-900/30 border-emerald-700 text-emerald-300'
+                      ? 'bg-emerald-50 border-emerald-200 text-emerald-700'
                       : 'bg-[var(--color-surface-light)] border-[var(--color-border)] text-[var(--color-text-muted)]'
                   }`}
                 >
                   <div
-                    className={`w-2 h-2 rounded-full ${f.active ? 'bg-emerald-500' : 'bg-gray-600'}`}
+                    className={`w-2 h-2 rounded-full ${f.active ? 'bg-emerald-500' : 'bg-gray-300'}`}
                   />
                   <span className="text-sm">{f.label}</span>
                 </div>

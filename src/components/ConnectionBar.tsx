@@ -63,8 +63,8 @@ export function ConnectionBar({
 
   if (!isSupported) {
     return (
-      <div className="bg-red-900/50 border border-red-700 rounded-xl p-4 text-center">
-        <p className="text-red-300 font-medium">
+      <div className="bg-red-50 border border-red-200 rounded-xl p-4 text-center">
+        <p className="text-red-600 font-medium">
           Web Serial API is not supported in this browser. Please use Chrome or Edge.
         </p>
       </div>
@@ -138,7 +138,7 @@ export function ConnectionBar({
             <button
               onClick={() => onAutodetect(baudRate)}
               disabled={isScanning || isBusy}
-              className="px-4 py-1.5 bg-purple-600 hover:bg-purple-700 disabled:opacity-50 text-white text-sm font-medium rounded-lg transition-colors cursor-pointer flex items-center gap-1.5"
+              className="px-4 py-1.5 bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] disabled:opacity-50 text-white text-sm font-medium rounded-lg transition-colors cursor-pointer flex items-center gap-1.5"
             >
               {isScanning ? (
                 <>
@@ -175,7 +175,7 @@ export function ConnectionBar({
           <>
             <button
               onClick={onDisconnect}
-              className="px-4 py-1.5 bg-red-600 hover:bg-red-700 text-white text-sm font-medium rounded-lg transition-colors cursor-pointer"
+              className="px-4 py-1.5 bg-neutral-200 hover:bg-neutral-300 text-neutral-700 text-sm font-medium rounded-lg transition-colors cursor-pointer"
             >
               Disconnect
             </button>
@@ -208,14 +208,14 @@ export function ConnectionBar({
               {!isPolling ? (
                 <button
                   onClick={() => onStartPolling(pollInterval)}
-                  className="px-4 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-medium rounded-lg transition-colors cursor-pointer"
+                  className="px-4 py-1.5 bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] text-white text-sm font-medium rounded-lg transition-colors cursor-pointer"
                 >
                   Start Polling
                 </button>
               ) : (
                 <button
                   onClick={onStopPolling}
-                  className="px-4 py-1.5 bg-amber-600 hover:bg-amber-700 text-white text-sm font-medium rounded-lg transition-colors cursor-pointer"
+                  className="px-4 py-1.5 bg-neutral-200 hover:bg-neutral-300 text-neutral-700 text-sm font-medium rounded-lg transition-colors cursor-pointer"
                 >
                   Stop Polling
                 </button>
@@ -234,7 +234,7 @@ export function ConnectionBar({
 
       {/* Scan progress */}
       {scanStatus && (
-        <div className="flex items-center gap-2 text-sm text-purple-300">
+        <div className="flex items-center gap-2 text-sm text-orange-600">
           <svg className="w-3.5 h-3.5 animate-spin" fill="none" viewBox="0 0 24 24">
             <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
             <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
@@ -252,7 +252,7 @@ export function ConnectionBar({
                 {detectedPorts.length} port{detectedPorts.length !== 1 ? 's' : ''} available
               </span>
               {bmsPort && (
-                <span className="px-2 py-0.5 bg-emerald-900/40 text-emerald-300 border border-emerald-700 rounded-full">
+                <span className="px-2 py-0.5 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-full">
                   BMS detected: {bmsPort.label}
                 </span>
               )}
@@ -272,7 +272,7 @@ export function ConnectionBar({
 
       {/* Error display */}
       {error && (
-        <div className="px-3 py-2 bg-red-900/30 border border-red-800 rounded-lg text-sm text-red-300">
+        <div className="px-3 py-2 bg-red-50 border border-red-200 rounded-lg text-sm text-red-600">
           {error}
         </div>
       )}
