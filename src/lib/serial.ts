@@ -458,7 +458,6 @@ export class BMSSerial {
 
         if (done || !value) break;
 
-        this.emitTraffic('RX', value);
         chunks.push(value);
         totalLength += value.length;
 
@@ -466,11 +465,18 @@ export class BMSSerial {
         const merged = mergeChunks(chunks, totalLength);
         const packet = parseResponsePacket(merged);
         if (packet) {
+          // Emit the complete reassembled frame as a single traffic entry
+          this.emitTraffic('RX', merged);
           return merged;
         }
       }
 
-      return mergeChunks(chunks, totalLength);
+      // Emit whatever we received (incomplete frame / timeout)
+      const merged = mergeChunks(chunks, totalLength);
+      if (totalLength > 0) {
+        this.emitTraffic('RX', merged);
+      }
+      return merged;
     } finally {
       clearTimeout(timer);
       // Cancel any in-flight read before releasing
